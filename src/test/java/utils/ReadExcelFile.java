@@ -8,7 +8,7 @@ public class ReadExcelFile {
     XSSFWorkbook wb;
     //Creating a constructor of the same class that would load excel file using the File I/O stream
     public ReadExcelFile(){
-        File src = new File("/Users/yuriyfromrussia/IdeaProjects/com.testmaven/src/test/java/testdata/TestData.xlsx");
+        File src = new File(System.getProperty("user.dir") + "/src/test/java/testdata/TestData.xlsx");
         try {
             FileInputStream fis = new FileInputStream(src);
             wb = new XSSFWorkbook(fis);
