@@ -1,33 +1,34 @@
 package org.example;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.concurrent.TimeUnit;
+
+@Tag("SmokeTest")
 public class HomePageAmazonTest {
     private WebDriver driver;
     String baseUrl = "https://www.amazon.com";
     String expectedTitle = "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more";
 
-    @Before
+    @BeforeEach
     public void setUp() {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
     @Test
+    @DisplayName("Open Amazon Home page and check the title")
     public void openHomePageAndCheckTheTitle() {
         driver.get(baseUrl);
-        Assert.assertEquals(expectedTitle, driver.getTitle());
+        Assertions.assertEquals(expectedTitle, driver.getTitle());
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         driver.quit();
     }
