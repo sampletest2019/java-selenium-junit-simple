@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import utils.ScreenshotUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,6 +31,7 @@ public class HomePageAmazonTest {
 
     @AfterEach
     public void tearDown() {
+        ScreenshotUtils.screenshot(driver);
         driver.quit();
     }
 }

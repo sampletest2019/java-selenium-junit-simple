@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import utils.ScreenshotUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +39,7 @@ public class SearchAmazonTest {
 
     @AfterEach
     public void tearDown() {
+        ScreenshotUtils.screenshot(driver);
         driver.quit();
     }
 
